@@ -5,15 +5,30 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      numbers: Array.from([...Array(49).keys()].map(x => ++x)),
     };
   }
 
-  render() {
+  renderField(i) {
     return (
-      <div>
-        
+      <Field 
+        value={this.state.numbers[i]}
+      />
+    )  
+    ;
+  }
+
+  render() {
+    const fields = this.state.numbers.map((number, index) =>
+      <div 
+        className="field"
+        key={number.toString()}
+      >
+        {this.renderField(index)}
       </div>
+    );
+    return (
+      fields
     );
   }
 }
