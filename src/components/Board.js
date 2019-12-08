@@ -12,10 +12,19 @@ class Board extends React.Component {
 
   handleClick(i) {
     const numbers = this.state.numbers.slice();
-    const selectedNumbers = this.state.selectedNumbers.concat(numbers[i]);
-    console.log(selectedNumbers);
+    let selectedNumbers = this.state.selectedNumbers.slice();
     
-    numbers[i] = 'X';
+    if (numbers[i] !== 'X') {
+      selectedNumbers = selectedNumbers.concat(numbers[i]);
+      numbers[i] = 'X';
+    } else {
+      numbers[i] = i+1;
+      let index = selectedNumbers.indexOf(numbers[i])
+      if (index >= 0) {
+        selectedNumbers.splice(index, 1);
+      }
+    }
+    
     this.setState({
       numbers: numbers,
       selectedNumbers: selectedNumbers,
@@ -51,3 +60,9 @@ class Board extends React.Component {
 }
 
 export default Board;
+
+function searchSelected(selectedNumbers, number) {
+  let index = selectedNumbers.indexOf(number);
+
+  return index;
+}
