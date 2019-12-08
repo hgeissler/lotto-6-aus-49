@@ -6,15 +6,19 @@ class Board extends React.Component {
     super(props);
     this.state = {
       numbers: Array.from([...Array(49).keys()].map(x => ++x)),
+      selectedNumbers: []
     };
   }
 
   handleClick(i) {
     const numbers = this.state.numbers.slice();
-
+    const selectedNumbers = this.state.selectedNumbers.concat(numbers[i]);
+    console.log(selectedNumbers);
+    
     numbers[i] = 'X';
     this.setState({
       numbers: numbers,
+      selectedNumbers: selectedNumbers,
     });
   }
 
