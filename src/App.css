@@ -13,14 +13,20 @@
   color: white;
 }
 
+.board {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+}
+
 .field {
   background: #fff;
   border: 1px solid #999;
   font-size: 24px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  line-height: 44px;
+  height: 44px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 44px;
 }

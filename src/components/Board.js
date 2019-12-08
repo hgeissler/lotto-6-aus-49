@@ -27,8 +27,11 @@ class Board extends React.Component {
         {this.renderField(index)}
       </div>
     );
+    
     return (
-      fields
+      <div className="board">
+        {fields}
+      </div>
     );
   }
 }
