@@ -9,10 +9,20 @@ class Board extends React.Component {
     };
   }
 
+  handleClick(i) {
+    const numbers = this.state.numbers.slice();
+
+    numbers[i] = 'X';
+    this.setState({
+      numbers: numbers,
+    });
+  }
+
   renderField(i) {
     return (
       <Field 
         value={this.state.numbers[i]}
+        onClick={() => this.handleClick(i)}
       />
     )  
     ;
@@ -21,8 +31,8 @@ class Board extends React.Component {
   render() {
     const fields = this.state.numbers.map((number, index) =>
       <div 
-        className="field"
-        key={number.toString()}
+        className="{field}"
+        key={index.toString()}
       >
         {this.renderField(index)}
       </div>

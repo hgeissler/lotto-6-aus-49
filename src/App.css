@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 .App {
   text-align: center;
 }
@@ -17,16 +19,22 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
+  border: 1px solid #4f5259;
 }
 
 .field {
   background: #fff;
-  border: 1px solid #999;
-  font-size: 24px;
+  border: 1px solid #62656b;
+  font-size: 32px;
   font-weight: bold;
-  line-height: 44px;
-  height: 44px;
+  line-height: 64px;
+  height: 64px;
   padding: 0;
   text-align: center;
-  width: 44px;
+  width: 64px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.xField {
+  color: red;
 }
