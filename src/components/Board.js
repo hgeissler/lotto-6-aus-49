@@ -5,8 +5,10 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Array von 1 bis 49
       numbers: Array.from([...Array(49).keys()].map(x => ++x)),
-      selectedNumbers: []
+      selectedNumbers: [],
+      buttonClass: 'buttonHidden',
     };
   }
 
@@ -15,18 +17,27 @@ class Board extends React.Component {
     let selectedNumbers = this.state.selectedNumbers.slice();
     
     if (selectedNumbers.length < 6 && numbers[i] !== 'X') {
-        selectedNumbers = selectedNumbers.concat(numbers[i]);
-        numbers[i] = 'X';
+      // X setzen
+      selectedNumbers = selectedNumbers.concat(numbers[i]);
+      numbers[i] = 'X';
     } else {
+      // X mit der Zahl ersetzen bei erneutem Klick auf das Feld
       numbers[i] = i+1;
       let index = selectedNumbers.indexOf(numbers[i])
       if (index >= 0) {
         selectedNumbers.splice(index, 1);
       }
+
+      this.setState({
+        buttonClass: 'buttonHidden'
+      })
     }
 
+    // Button anzeigen
     if (selectedNumbers.length === 6) {
-      console.log(selectedNumbers);
+      this.setState({
+        buttonClass: 'button'
+      })
     } 
       
     
@@ -34,6 +45,13 @@ class Board extends React.Component {
       numbers: numbers,
       selectedNumbers: selectedNumbers,
     });
+  }
+
+  displayNumbers() {
+    let numbers = this.state.selectedNumbers.slice();
+    // Sortiert selectedNumbers-Array
+    numbers.sort(function(a, b){return a-b});
+    alert(numbers)
   }
 
   renderField(i) {
@@ -57,8 +75,16 @@ class Board extends React.Component {
     );
     
     return (
-      <div className="board">
-        {fields}
+      <div>
+        <div className="allFields">
+          {fields}
+        </div>
+        <button 
+          className={this.state.buttonClass}
+          onClick={() => this.displayNumbers()}
+        >
+          WEITER
+        </button>
       </div>
     );
   }

@@ -15,7 +15,7 @@
   color: white;
 }
 
-.board {
+.allFields {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
@@ -37,4 +37,14 @@
 
 .xField {
   color: red;
+}
+
+.button {
+  margin: 20px;
+  visibility: visible;
+}
+
+.buttonHidden {
+  margin: 20px;
+  visibility: hidden;
 }
